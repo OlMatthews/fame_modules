@@ -22,27 +22,10 @@ class FlareCapa(ProcessingModule):
         {
             'name': 'rules',
             'type': 'str',
-            "default": os.path.join(MODULES_ROOT, 'capa-rules'),
+            "default": os.path.join(MODULES_ROOT, "community", self.name, 'capa-rules'),
             'description': 'Path for Capa rules. The directory needs to be created manually and can be cloned from https://github.com/mandiant/capa-rules'
         }
     ]
-
-    def __init__(self):
-        repo = Repository.get(name="capa-rules")
-        if repo:
-            print("[+] Community repository already installed.")
-        else:
-            print("[+] Installing community repository ...")
-            repo = Repository({
-                'name': 'capa-rules',
-                'address': 'https://github.com/mandiant/capa-rules',
-                'private': False,
-                'status': 'cloning',
-                'branch': 'master'
-            })
-            repo.save()
-            repo.do_clone()
-
 
     def initialize(self):
         if not HAVE_CAPA:
