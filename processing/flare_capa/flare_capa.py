@@ -1,7 +1,7 @@
 from fame.core.module import ProcessingModule
 from fame.common.exceptions import ModuleInitializationError, ModuleExecutionError
 from fame.core.repository import Repository
-from fame.core.constants import MODULES_ROOT
+from fame.common.constants import MODULES_ROOT
 
 try:
     import capa.main
