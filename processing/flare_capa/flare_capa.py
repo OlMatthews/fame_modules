@@ -2,7 +2,7 @@ from fame.core.module import ProcessingModule
 from fame.common.exceptions import ModuleInitializationError, ModuleExecutionError
 from fame.core.repository import Repository
 from fame.common.constants import MODULES_ROOT
-from os import path
+import os
 
 try:
     import capa.main
