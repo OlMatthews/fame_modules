@@ -1,5 +1,7 @@
 from fame.core.module import ProcessingModule
 from fame.common.exceptions import ModuleInitializationError, ModuleExecutionError
+from fame.core.repository import Repository
+from fame.core.constants import MODULES_ROOT
 
 try:
     import capa.main
@@ -26,6 +28,21 @@ class FlareCapa(ProcessingModule):
     def initialize(self):
         if not HAVE_CAPA:
             raise ModuleInitializationError(self, 'Missing dependency: flare-capa')
+          
+        repo = Repository.get(name="capa-rules")
+        if repo:
+            print("[+] Community repository already installed.")
+        else:
+            print("[+] Installing community repository ...")
+            repo = Repository({
+                'name': 'capa-rules',
+                'address': 'https://github.com/mandiant/capa-rules',
+                'private': False,
+                'status': 'cloning',
+                'branch': 'master'
+            })
+            repo.save()
+            repo.do_clone()
 
     def compute_layout(self, rules, extractor, capabilities):
         """
