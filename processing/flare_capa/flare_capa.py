@@ -21,7 +21,7 @@ class FlareCapa(ProcessingModule):
         {
             'name': 'rules',
             'type': 'str',
-            "default": os.path.join(MODULES_ROOT, 'capa-rules')
+            "default": os.path.join(MODULES_ROOT, 'capa-rules'),
             'description': 'Path for Capa rules. The directory needs to be created manually and can be cloned from https://github.com/mandiant/capa-rules'
         }
     ]
