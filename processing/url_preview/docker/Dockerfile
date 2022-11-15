@@ -1,4 +1,4 @@
-FROM node:10.23-slim
+FROM node:14-slim
 
 # See https://crbug.com/795759
 RUN apt update && apt install -yq libgconf-2-4 software-properties-common wget gnupg
