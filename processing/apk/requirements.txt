@@ -1,4 +1,0 @@
-androguard==3.3.5
-yara-python==4.0.2
-pyelftools==0.26
-pycryptodome
